@@ -2,7 +2,7 @@ import { useState, useRef, type KeyboardEvent } from 'react';
 import { Send } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-interface ChatInputProps {
+export interface ChatInputProps {
   onSend: (message: string) => void;
   disabled?: boolean;
   placeholder?: string;
@@ -10,10 +10,10 @@ interface ChatInputProps {
 }
 
 export function ChatInput({ 
-  onSend, 
-  disabled = false, 
-  placeholder = 'How are you feeling today?',
-  className = ''
+  onSend,
+  disabled = false,
+  placeholder = 'Type a message...',
+  className,
 }: ChatInputProps) {
   const [message, setMessage] = useState('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);

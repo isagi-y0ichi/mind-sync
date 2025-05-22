@@ -51,7 +51,7 @@ const mobileMenu = {
   }
 };
 
-export default function Navbar() {
+export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
