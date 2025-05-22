@@ -1,26 +1,47 @@
-import { z } from "zod";
+export type MessageStatus = 'sending' | 'sent' | 'error';
 
-export const ChatMessageSchema = z.object({
-  sender: z.enum(["user", "ai"]),
-  message: z.string().min(1),
-  timestamp: z.number().default(() => Date.now())
-});
+export type MessageSender = 'user' | 'ai' | 'system';
 
-export type ChatMessage = z.infer<typeof ChatMessageSchema>;
+export interface BaseChatMessage {
+  id?: string;
+  sender: MessageSender;
+  message: string;
+  timestamp?: number;
+  status?: MessageStatus;
+}
 
-export const ChatRequestSchema = z.object({
-  messages: z.array(ChatMessageSchema),
-});
+export interface ChatMessage extends Required<BaseChatMessage> {}
 
-export const ChatResponseSchema = z.object({
-  reply: z.string(),
-});
+export type ChatRole = 'user' | 'assistant' | 'system';
 
-export type ChatState = {
+export interface ChatRequest {
+  role: ChatRole;
+  content: string;
+}
+
+export interface AssessmentScores {
+  'PHQ-9': number;
+  'BDI-II': number;
+  'Hamilton': number;
+}
+
+export interface ChatState {
+  // State
   messages: ChatMessage[];
   loading: boolean;
+  isTyping: boolean;
   error: string | null;
-  addMessage: (message: ChatMessage) => void;
+  
+  // Basic Chat Actions
+  addMessage: (message: BaseChatMessage) => void;
   sendMessage: (text: string) => Promise<void>;
   reset: () => void;
-};
+  
+  // Assessment Actions
+  startDepressionAssessment: (initialMessage: string) => Promise<boolean>;
+  continueDepressionAssessment: (userReply: string) => Promise<{
+    completed: boolean;
+    scores?: Partial<AssessmentScores>;
+    error?: boolean;
+  }>;
+}

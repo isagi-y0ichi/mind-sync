@@ -69,7 +69,7 @@ export function ChatInput({
             className={cn(
               'inline-flex items-center rounded-full p-1.5 text-white',
               disabled || !message.trim()
-                ? 'bg-gray-300 cursor-not-allowed'
+                ? 'bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'
                 : 'bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'
             )}
             onClick={handleSubmit}

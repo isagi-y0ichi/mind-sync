@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Chat from './pages/Chat';
+import { Home } from './pages/Home';
+import { Chat } from './pages/Chat';
 
-function App() {
+export function App() {
   return (
     <div className="min-h-screen bg-white">
       <main className="container mx-auto px-4 py-6 h-[calc(100vh-5rem)]">
@@ -25,4 +25,4 @@ function App() {
   );
 }
 
-export default App;
+

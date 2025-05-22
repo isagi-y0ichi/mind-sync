@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { MessageSquare, Heart } from 'lucide-react';
 
-export default function Home() {
+export function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex flex-col">
       <main className="flex-1 flex flex-col items-center justify-center p-6 text-center">

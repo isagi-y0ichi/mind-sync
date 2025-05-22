@@ -9,7 +9,7 @@ interface DiagnosisEntry {
   mood: string;
 }
 
-export default function DiagnosisHistory() {
+export function DiagnosisHistory() {
   const [isOpen, setIsOpen] = useState(false);
   const [diagnoses, setDiagnoses] = useState<DiagnosisEntry[]>([]);
   const [isEnabled, setIsEnabled] = useState(() => {

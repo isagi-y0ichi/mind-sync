@@ -5,9 +5,9 @@ import { Toaster } from 'react-hot-toast';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from './components/theme-provider';
 import './styles/globals.css';
-import App from './App';
-import Navbar from './components/Navbar';
-import DiagnosisHistory from './components/DiagnosisHistory';
+import { App } from './App';
+import { Navbar } from './components/Navbar';
+import { DiagnosisHistory } from './components/DiagnosisHistory';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 // Create a client
